@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Аналитика — Умный кампус AI</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<main>
+  <div class="info"><b>Как работает AI-аналитика.</b> Модуль проверяет каждое помещение двумя способами: <b>пороги</b> (температура ≥28/32 °C, CO2 ≥1000/1500 ppm, энергия +30%/+60% от базовой линии) и <b>z-score</b> — насколько текущее значение отличается от среднего за последние 12 замеров (аномалия при z &gt; 2). Для каждой аномалии выводится причина, уровень риска и рекомендация.</div>
+  <div class="kpi-grid" id="aiKpis"></div>
+
+  <div class="grid-2 top">
+    <div class="card">
+      <div class="card-head"><h2>Z-score по помещениям (температура / CO2)</h2><button class="btn small" id="simulateBtn">↻ Новый замер</button></div>
+      <div class="chart-box"><canvas id="zChart"></canvas></div>
+    </div>
+    <div class="card ai-card">
+      <h2>🧠 Рекомендации AI</h2>
+      <div id="recommendations"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><h2>Обнаруженные аномалии</h2>
+      <select id="riskFilter"><option value="">Любой риск</option><option value="high">Высокий</option><option value="medium">Средний</option><option value="low">Низкий</option></select></div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Помещение</th><th>Параметр</th><th>Значение</th><th>Z-score</th><th>Причина</th><th>Риск</th><th>Рекомендация</th><th></th></tr></thead>
+      <tbody id="anomaliesBody"></tbody>
+    </table></div>
+  </div>
+</main>
+<div class="toast" id="toast"></div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/storage.js"></script>
+<script src="assets/js/ai.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/analytics.js"></script>
+</body>
+</html>
