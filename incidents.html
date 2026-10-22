@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Заявки — Умный кампус AI</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<main>
+  <div class="grid-2">
+    <div class="card">
+      <h2 id="formTitle">Новая заявка</h2>
+      <form class="form" id="incidentForm">
+        <input type="hidden" id="incidentId">
+        <label class="full">Описание проблемы<input id="title" required maxlength="80" placeholder="Например: не работает проектор"></label>
+        <label>Помещение<select id="room" required></select></label>
+        <label>Приоритет
+          <select id="priority"><option value="high">Высокий</option><option value="medium" selected>Средний</option><option value="low">Низкий</option></select></label>
+        <label>Статус
+          <select id="status"><option value="open">Открыта</option><option value="in_progress">В работе</option><option value="resolved">Решена</option></select></label>
+        <label>Ответственный<input id="assignee" required maxlength="40" placeholder="Инженер"></label>
+        <label class="full">Комментарий<textarea id="comment" rows="2" maxlength="200"></textarea></label>
+        <div class="form-actions full">
+          <button class="btn" type="submit" id="saveBtn">Добавить заявку</button>
+          <button class="btn secondary" type="button" id="cancelBtn" hidden>Отмена</button>
+        </div>
+      </form>
+    </div>
+    <div class="card">
+      <h2>Сводка по заявкам</h2>
+      <div class="kpi-grid" id="incidentKpis" style="grid-template-columns:repeat(3,1fr)"></div>
+      <div class="info">Заявки хранятся в localStorage: после перезагрузки страницы изменения сохраняются.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="toolbar">
+      <input type="search" id="incidentSearch" placeholder="Поиск заявки…">
+      <select id="incidentStatusFilter">
+        <option value="">Все статусы</option><option value="open">Открыта</option><option value="in_progress">В работе</option><option value="resolved">Решена</option>
+      </select>
+    </div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>№</th><th>Проблема</th><th>Помещение</th><th>Приоритет</th><th>Статус</th><th>Ответственный</th><th>Комментарий</th><th>Действия</th></tr></thead>
+      <tbody id="incidentsBody"></tbody>
+    </table></div>
+  </div>
+</main>
+<div class="toast" id="toast"></div>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/storage.js"></script>
+<script src="assets/js/ai.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/incidents.js"></script>
+</body>
+</html>
