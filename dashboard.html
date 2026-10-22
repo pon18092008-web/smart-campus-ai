@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Панель управления — Умный кампус AI</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<main>
+  <div class="kpi-grid" id="kpis"></div>
+
+  <div class="grid-3">
+    <div class="card">
+      <div class="card-head"><h2>Энергопотребление по корпусам, кВт·ч</h2><button class="btn small" id="simulateBtn">↻ Обновить показания</button></div>
+      <div class="chart-box"><canvas id="energyChart"></canvas></div>
+    </div>
+    <div class="card">
+      <h2>Статус устройств</h2>
+      <div class="chart-box"><canvas id="deviceChart"></canvas></div>
+    </div>
+    <div class="card">
+      <h2>Уведомления</h2>
+      <div class="list" id="notifications"></div>
+    </div>
+  </div>
+
+  <div class="grid-2">
+    <div class="card">
+      <h2>Средняя температура кампуса, °C (тренд)</h2>
+      <div class="chart-box"><canvas id="tempChart"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="card-head"><h2>Энергия кампуса за неделю, кВт·ч</h2></div>
+      <div class="chart-box"><canvas id="weekChart"></canvas></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-head"><h2>Проблемные помещения</h2><a href="rooms.html">Все помещения →</a></div>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Помещение</th><th>Корпус</th><th>Температура</th><th>CO2</th><th>Энергия</th><th>Статус</th><th>Рекомендация AI</th></tr></thead>
+      <tbody id="problemRooms"></tbody>
+    </table></div>
+  </div>
+</main>
+<div class="toast" id="toast"></div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/storage.js"></script>
+<script src="assets/js/ai.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/dashboard.js"></script>
+</body>
+</html>
