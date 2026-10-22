@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Настройки — Умный кампус AI</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<main>
+  <div class="grid-2">
+    <div class="card">
+      <h2>Оформление</h2>
+      <p class="muted">Тема сохраняется в localStorage и применяется на всех страницах.</p>
+      <div class="form-actions">
+        <button class="btn" id="darkBtn">🌙 Тёмная тема</button>
+        <button class="btn secondary" id="lightBtn">☀️ Светлая тема</button>
+      </div>
+    </div>
+    <div class="card">
+      <h2>Параметры кампуса</h2>
+      <form class="form" id="settingsForm">
+        <label class="full">Название учебного заведения<input id="campusName" required maxlength="60"></label>
+        <label class="full"><span><input type="checkbox" id="autoRefresh"> Автоматически обновлять показания датчиков (каждые 10 с на Dashboard)</span></label>
+        <div class="form-actions full"><button class="btn" type="submit">Сохранить</button></div>
+      </form>
+    </div>
+  </div>
+  <div class="card">
+    <h2>Тестовые данные</h2>
+    <p class="muted" id="dataInfo"></p>
+    <button class="btn danger" id="resetBtn">Сбросить тестовые данные</button>
+  </div>
+</main>
+<div class="toast" id="toast"></div>
+
+<script src="assets/js/data.js"></script>
+<script src="assets/js/storage.js"></script>
+<script src="assets/js/ai.js"></script>
+<script src="assets/js/app.js"></script>
+<script src="assets/js/settings.js"></script>
+</body>
+</html>
